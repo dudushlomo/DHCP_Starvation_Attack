@@ -21,14 +21,7 @@ from the sniffing line (explained in the comments of the code)
 Also, this program doesn't continue to flood the server with DHCP Discover requests, for me, it was enough here.
 There is explanation in the code comments of the main function how to do that.
 
-1.
-The code is 2.py it includes code that will get the list of all the interfaces from the OS
-and will give the user the option to choose on which interface he would like to send the attack in the main function.
 
-2.
-The code also include the implement of the attack via Scapy module/library.
-
-3.
 To install the dhcpd service use this link:
 https://www.server-world.info/en/note?os=CentOS_Stream_9&p=dhcp&f=1
 The /etc/dhcp/dhcpd.conf file is not good for two interfaces so use this configuration instead:
