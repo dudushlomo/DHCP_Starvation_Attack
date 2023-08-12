@@ -1,4 +1,4 @@
-# DHCP_Starvation_Attack
+Use Code mode and not Preview Mode to read the file right.
 Introduction:
 DHCP starvation attack is an attack that targets DHCP servers whereby forged DHCP requests
 are crafted by an attacker with the intent of exhausting all available IP addresses
@@ -21,12 +21,20 @@ from the sniffing line (explained in the comments of the code)
 Also, this program doesn't continue to flood the server with DHCP Discover requests, for me, it was enough here.
 There is explanation in the code comments of the main function how to do that.
 
-
+1.
+The code is 2.py it includes code that will get the list of all the interfaces from the OS
+and will give the user the option to choose on which interface he would like to send the attack in the main function.
+2.
+The code also include the implement of the attack via Scapy module/library.
+3.
 To install the dhcpd service use this link:
 https://www.server-world.info/en/note?os=CentOS_Stream_9&p=dhcp&f=1
 The /etc/dhcp/dhcpd.conf file is not good for two interfaces so use this configuration instead:
-
-
+#
+# DHCP Server Configuration file.
+#   see /usr/share/doc/dhcp-server/dhcpd.conf.example
+#   see dhcpd.conf(5) man page
+#
 default-lease-time 600;
 max-lease-time 7200;
 INTERFACESv4="ens34";
@@ -38,7 +46,6 @@ range 192.168.10.40 192.168.10.45;
 
 To lunch the attack, install pip and scapy first as explained in the program code (first lines).
 Then run the code use "sudo" or "sudo su" command, with the command python3 2.py or python3 <file>.
-
 4.
 Use "cat /var/lib/dhcpd/dhcpd.leases" to see the leases that made by the attack. this is an example:
 lease 192.168.10.45 {
@@ -148,8 +155,8 @@ The commands restrict, shut down, and port-security can be used to enforce these
 Second way to prevent the attack in case that there is no switch is by leasing ip address only to known clients,
 To do this use this code in dhpd.conf file:
 deny unknown-clients;
-
-make a list below by this format: "host <host name> { hardware ethernet <MAC Address>; }"
-For example in my server I added this line: (Remove the line below in your server)
+# known-clients are:
+# make a list below by this format: "host <host name> { hardware ethernet <MAC Address>; }"
+# For example in my server I added this line: (Remove the line below in your server)
 host linux2 { hardware ethernet 00:0c:29:0e:84:92; }
 
