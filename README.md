@@ -24,8 +24,10 @@ There is explanation in the code comments of the main function how to do that.
 1.
 The code is 2.py it includes code that will get the list of all the interfaces from the OS
 and will give the user the option to choose on which interface he would like to send the attack in the main function.
+
 2.
 The code also include the implement of the attack via Scapy module/library.
+
 3.
 To install the dhcpd service use this link:
 https://www.server-world.info/en/note?os=CentOS_Stream_9&p=dhcp&f=1
@@ -43,6 +45,7 @@ range 192.168.10.40 192.168.10.45;
 
 To lunch the attack, install pip and scapy first as explained in the program code (first lines).
 Then run the code use "sudo" or "sudo su" command, with the command python3 2.py or python3 <file>.
+
 4.
 Use "cat /var/lib/dhcpd/dhcpd.leases" to see the leases that made by the attack. this is an example:
 lease 192.168.10.45 {
