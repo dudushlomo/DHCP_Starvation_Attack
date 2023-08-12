@@ -30,11 +30,8 @@ The code also include the implement of the attack via Scapy module/library.
 To install the dhcpd service use this link:
 https://www.server-world.info/en/note?os=CentOS_Stream_9&p=dhcp&f=1
 The /etc/dhcp/dhcpd.conf file is not good for two interfaces so use this configuration instead:
-#
-# DHCP Server Configuration file.
-#   see /usr/share/doc/dhcp-server/dhcpd.conf.example
-#   see dhcpd.conf(5) man page
-#
+
+
 default-lease-time 600;
 max-lease-time 7200;
 INTERFACESv4="ens34";
@@ -155,8 +152,8 @@ The commands restrict, shut down, and port-security can be used to enforce these
 Second way to prevent the attack in case that there is no switch is by leasing ip address only to known clients,
 To do this use this code in dhpd.conf file:
 deny unknown-clients;
-# known-clients
-# make a list below by this format: "host <host name> { hardware ethernet <MAC Address>; }"
-# For example in my server I added this line: (Remove the line below in your server)
+
+make a list below by this format: "host <host name> { hardware ethernet <MAC Address>; }"
+For example in my server I added this line: (Remove the line below in your server)
 host linux2 { hardware ethernet 00:0c:29:0e:84:92; }
 
